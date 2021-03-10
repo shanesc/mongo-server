@@ -4,6 +4,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
+/* Using Babel, we can instead use ES6 import syntax, e.g. */
+// import express from 'express';
+
 const port = process.env.PORT || 3000;
 
 // SETUP DATABASE
@@ -17,6 +20,9 @@ db.once('open', () => console.log('Connected to database'));
 
 // MIDDLEWARE
 app.use(express.json());
+
+const subscribersRouter = require('./routes/subscribers');
+app.use('/subscribers', subscribersRouter);
 
 // START SERVER
 app.listen(port, () => console.log(`Server started on port ${port}`));

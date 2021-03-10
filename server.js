@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-/* Using Babel, we can instead use ES6 import syntax, e.g. */
+/* Using Babel, we can instead use ES6 import/export syntax, e.g. */
 // import express from 'express';
 
 const port = process.env.PORT || 3000;

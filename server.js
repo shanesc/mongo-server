@@ -1,8 +1,10 @@
 require('dotenv').config();
 
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
+const subscribersRouter = require('./routes/subscribers');
+
+const app = express();
 
 /* Using Babel, we can instead use ES6 import/export syntax, e.g. */
 // import express from 'express';
@@ -21,7 +23,6 @@ db.once('open', () => console.log('Connected to database'));
 // MIDDLEWARE
 app.use(express.json());
 
-const subscribersRouter = require('./routes/subscribers');
 app.use('/subscribers', subscribersRouter);
 
 // START SERVER

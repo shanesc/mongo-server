@@ -1,6 +1,7 @@
 const express = require('express');
-const router = express.Router();
 const Subscriber = require('../models/subscriber');
+
+const router = express.Router();
 
 // Get many
 router.get('/', async (req, res) => {
@@ -54,11 +55,9 @@ router.delete('/:id', getSubscriber, async (req, res) => {
 // Helper middleware
 async function getSubscriber(req, res, next) {
   try {
-    subscriber = await Subscriber.findById(req.params.id);
+    const subscriber = await Subscriber.findById(req.params.id);
     if (subscriber === null) {
-      return res
-        .status(404)
-        .json({ message: 'Subscriber not found' });
+      return res.status(404).json({ message: 'Subscriber not found' });
     } else {
       res.subscriber = subscriber;
     }
